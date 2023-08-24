@@ -7,6 +7,14 @@ module MyEnumerable
     true
   end
 
+  def any?
+    @list.size.times do |index|
+      result = yield @list[index] if block_given?
+      return true if result == true
+    end
+    false
+  end
+
   def filter
     filtered = []
     @list.each do |element|
